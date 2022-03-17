@@ -1,0 +1,144 @@
+$blue:    #0d6efd;
+$indigo:  #6610f2;
+$purple:  #6f42c1;
+$pink:    #d63384;
+$red:     #dc3545;
+$orange:  #fd7e14;
+$yellow:  #ffc107;
+$green:   #198754;
+$teal:    #20c997;
+$cyan:    #0dcaf0;
+$ancho: 1020px;
+$heigth: 200px;
+$width: 300px;
+$color: black;
+
+@mixin tamano($color){
+    color: $color;
+}
+
+* {
+    margin: 0;
+    justify-content: center;
+}
+
+header {
+    background-color: $red;
+    height: $heigth;
+}
+
+
+ul {
+    list-style: none;
+    display: flex;
+    background-color: black;
+    li {
+        text-align: left;
+        margin: 10px;
+        font-weight: bold;
+    }
+        a {
+        text-decoration: none;
+        color: white;
+        }
+        &:hover {
+            color: gray;
+        }
+}
+
+body {
+    text-align: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+}
+
+h1 {
+    font-weight: bold;
+    text-align: center;
+}
+
+.box1 {
+    @include tamano(black)
+}
+
+$i: 1;
+@for $i from 1 through 5 {
+    .col-#{$i} {
+        background-color: lightgray;
+        width: 20% * $i;
+        color: black;
+    }
+}
+
+a {
+    text-align: center;
+    justify-content: center;
+    color: black;
+    text-decoration: none;
+    
+    &:hover {
+        color: rgb(58, 56, 56);
+        text-decoration: underline;
+    }
+}
+
+
+main {
+    color: gray;
+}
+
+.titulo {
+    background-color: #dc3545;
+    border-radius: 25px;
+    font-size: 20px;
+}
+
+.titulo--nuevo {
+    @extend .titulo;
+    background-color: #d35934;
+}
+
+.titulo--ultimo {
+    @extend .titulo;
+}
+
+p {
+    text-align: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+}
+
+footer {
+    background-color: gray;
+    text-align: center;
+    justify-content: center;
+}
+
+$redes:(twitter:#0dcaf0, facebook: #17427e, instagram:#d35934);
+@each $clave, $valor in $redes {
+    .btn-#{$clave} {
+        background-color: $valor;
+    }
+}
+
+$vista:mobile;
+body {
+    @if $vista == desktop {
+        @media only screen and (min-width: 1024px){
+            background-color: white;
+        }
+    } @else if $vista == mobile {
+        @media only screen and (max-width:700px){
+            background-color: black;
+            a{color: white;}
+            header{background-color: #fd7e14;}
+            footer{display: none;}
+        }
+    } @else {
+        background-color: #20c997;
+    }
+}
+
+
+
